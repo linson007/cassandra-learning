@@ -1,0 +1,45 @@
+Installation in windows 10
+
+	https://medium.com/@sushantgautam_930/simple-way-to-install-cassandra-in-windows-10-6497e93989e6
+
+
+Starting cassandra 
+
+	Goto  H:\linson\PERSONAL\cassandra\apache-cassandra-3.11.8\bin
+
+	run: cassandra
+
+RUN cqlsh 
+
+	Goto  H:\linson\PERSONAL\cassandra\apache-cassandra-3.11.8\bin
+	run: cqlsh
+
+
+-------------------
+Cassandra Notes.
+
+Reference : https://www.tutorialspoint.com/cassandra/index.htm
+
+keypoints
+		Distributed DB
+		highly scalable
+		manage very large amounts of structured data
+		high availability with no single point of failure
+		type of NoSQL
+		It is scalable, fault-tolerant ( is the property that enables a system to continue operating properly in the event of the failure of (or one or more faults within) some of its components)
+			and consistent(acting or done in the same way over time, especially so as to be fair or accurate.)
+		It is a column-oriented database
+		
+Features of Cassandra
+		Elastic scalability -  highly scalable; it allows to add more hardware to accommodate more customers and more data
+		Always on architecture - no single point of failure, used in cases which cannot afford a failure
+		Fast linear-scale performance - linearly scalable, i.e., it increases your throughput as you increase the number of nodes in the cluster. Therefore it maintains a quick response time.
+		Flexible data storage - accommodates all possible data formats including: structured, semi-structured, and unstructured. It can dynamically accommodate changes to your data structures according to your need.
+		Easy data distribution -  provides the flexibility to distribute data where you need by replicating data across multiple data centers
+		Transaction support − Cassandra supports  ACID properties like Atomicity ( entire transaction take place at once or doesnt happen at all) , Consistency (Database must consistent before and after the transaction), Isolation(Multiple transaction can occur at the same time without interfer each other), and Durability ( changes of successful transaction occurs even the system fails ) (ACID).
+		
+			
+		
+	
+	
+CREATE KEYSPACE tutorialspoint WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};	
