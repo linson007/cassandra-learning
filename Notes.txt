@@ -38,7 +38,57 @@ Features of Cassandra
 		Easy data distribution -  provides the flexibility to distribute data where you need by replicating data across multiple data centers
 		Transaction support − Cassandra supports  ACID properties like Atomicity ( entire transaction take place at once or doesnt happen at all) , Consistency (Database must consistent before and after the transaction), Isolation(Multiple transaction can occur at the same time without interfer each other), and Durability ( changes of successful transaction occurs even the system fails ) (ACID).
 		
-			
+Cassandra Architecture
+
+	Cassandra has peer-to-peer distributed system across its nodes, and data is distributed among all the nodes in a cluster.
+	All the nodes in a cluster play the same role. Each node is independent and at the same time interconnected to other nodes
+	Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
+	When a node goes down, read/write requests can be served from other nodes in the network.
+	
+	
+	Components of Cassandra
+		Node − It is the place where data is stored.
+		Data center − It is a collection of related nodes.
+		Cluster − A cluster is a component that contains one or more data centers.
+		Commit log − The commit log is a crash-recovery mechanism in Cassandra. Every write operation is written to the commit log.
+		Mem-table − A mem-table is a memory-resident data structure. After commit log, the data will be written to the mem-table. Sometimes, for a single-column family, there will be multiple mem-tables.
+		SSTable − It is a disk file to which the data is flushed from the mem-table when its contents reach a threshold value.
+		Bloom filter − These are nothing but quick, nondeterministic, algorithms for testing whether an element is a member of a set. It is a special kind of cache. Bloom filters are accessed after every query.
+
+	
+
+	Cassandra Query Language(CQL)
+		 CQL treats the database (Keyspace) as a container of tables.
+		  Programmers use cqlsh: a prompt to work with CQL or separate application language drivers
+		  
+		  Clients approach any of the nodes for their read-write operations. That node (coordinator) plays a proxy between the client and the nodes holding the data.
+		  
+		  
+	Write Operations
+		Every write activity of nodes is captured by the commit logs written in the nodes.
+		Later the data will be captured and stored in the mem-table. 
+		Whenever the mem-table is full, data will be written into the SStable data file.
+		All writes are automatically partitioned and replicated throughout the cluster. 
+		Cassandra periodically consolidates the SSTables, discarding unnecessary data.
+	Read Operations
+		During read operations, Cassandra gets values from the mem-table and checks the bloom filter to find the appropriate SSTable 
+		that holds the required data.	
+		
+	Cassandra - Data Model
+		how Cassandra stores its data.
+		
+		https://www.tutorialspoint.com/cassandra/cassandra_data_model.htm
+		
+		https://dzone.com/articles/introduction-apache-cassandras
+		
+		https://dzone.com/articles/introduction-nosql-apache
+		
+		https://medium.com/@abhiruchigupta16/cassandra-explained-from-a-beginners-perspective-bb286b4d50b2
+		
+
+	  
+
+
 		
 	
 	
